@@ -1,21 +1,8 @@
 #include <iostream>
 
-#include<vector>
-
 #include<stack>
 
 using namespace std;
-
-void printStack(std::stack<char> charStack) //pass by value (versus pass by ref) 
-{
-    while (!charStack.empty())
-    {
-        cout << charStack.top();
-        charStack.pop(); //removes the top element off of the stack 
-    }
-}
-
-
 
 bool isMatch(char openSymbol, char closeSymbol)
 {
@@ -57,7 +44,7 @@ bool isBalanced(string inputString)
                 return false;
             }
         }// add else (neither an open symbol nor a close symbol)
-    }
+    } //end for loop
 
     if (!openSymbolStack.empty())
     {
@@ -67,47 +54,20 @@ bool isBalanced(string inputString)
     {
         return true;
     }
-}
+} //end `isBalanced`
 
 
 int main()
 {
-    //stack<int> numsStack; 
-    //cout << numsStack.top(); //AKA: "peek" in other languages 
-    
 
-    string balanced = "(){(){}}}}}"; 
+
+    string balancedString = "(() { () { } })";
 
     cout << std::boolalpha; 
-    cout << isBalanced(balanced) << endl; 
+    cout << "is `balancedString` indeed balanced? " << isBalanced(balancedString) << endl;
 
-
- /*   std::stack<char> palindromeStack;
-    palindromeStack.push('h');
-    palindromeStack.push('a');
-    palindromeStack.push('n');
-    palindromeStack.push('n');
-    palindromeStack.push('a');
-    palindromeStack.push('h');
-    palindromeStack.push('z');
-
-    cout << "\n" << palindromeStack.size() << endl;
-
-    printStack(palindromeStack);
-
-    cout << palindromeStack.size() << endl; */
-
-    //cout << palindromeStack.at(2) << endl;
-    //for (auto& element : palindromeStack)
-    //{
-    //    cout << element << endl; 
-    //}
-    //vector<int> v1; 
-    
-
-    
-    //main(); //infinite recursion (causes stack overflow) 
-                //see Linker -> System settings for default 1 MB value
+    string unbalancedString = "( ) { ( ) { } } }";
+    cout << "how about the UNBALANCED one? " << isBalanced(unbalancedString) << endl;
 
     return 0;
 }
