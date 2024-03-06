@@ -57,7 +57,7 @@ bool isBalanced(string inputString)
                 return false;
             }
         }// add else (neither an open symbol nor a close symbol)
-    }
+    } //end for loop 
 
     if (!openSymbolStack.empty())
     {
@@ -76,10 +76,10 @@ int main()
     //cout << numsStack.top(); //AKA: "peek" in other languages 
     
 
-    string balanced = "(){(){}}}}}"; 
+    string balanced = R"({})";
 
     cout << std::boolalpha; 
-    cout << isBalanced(balanced) << endl; 
+    cout << "Is it balanced?: " << isBalanced(balanced) << endl;
 
 
  /*   std::stack<char> palindromeStack;
